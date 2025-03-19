@@ -1,0 +1,15 @@
+/* src/styles/globals.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+#root {
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
+}

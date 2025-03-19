@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardians Cyber Realm</title>
+
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            text-align: center;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #007bff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        body.dark-mode .navbar {
+            background-color: #333;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: white;
+            margin-left: 30px;
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            color: yellow;
+        }
+
+        /* Carousel Section */
+        .carousel-container {
+            max-width: 800px;
+            margin: 80px auto 20px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Feature Section */
+        .features {
+            margin: 30px auto;
+            max-width: 800px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark-mode .features {
+            background: #1e1e1e;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            padding: 15px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        body.dark-mode .footer {
+            background: #333;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Security</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+        </div>
+    </nav>
+
+    <!-- Carousel Section -->
+    <div class="carousel-container">
+        <div class="carousel">
+            <img src="image1.jpg" alt="Cybersecurity Image 1">
+            <img src="image2.jpg" alt="Cybersecurity Image 2">
+            <img src="image3.jpg" alt="Cybersecurity Image 3">
+            
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h2>What We Offer</h2>
+        <ul>
+            <li>🔍 <strong>Threat Detection:</strong> AI-powered security analytics.</li>
+            <li>🛡️ <strong>Real-time Protection:</strong> Live security updates.</li>
+            <li>📊 <strong>Security Dashboard:</strong> Insights & reports.</li>
+            <li>🔒 <strong>Secure Encryption:</strong> Advanced cryptography.</li>
+            <li>👨‍💻 <strong>Penetration Testing Tools:</strong> Simulate cyber-attacks.</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2025 Guardians Cyber Realm | Protecting Digital Frontiers
+    </div>
+
+    <script>
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+
+            // Save preference in localStorage
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("darkMode", "enabled");
+            } else {
+                localStorage.setItem("darkMode", "disabled");
+            }
+        }
+
+        // Load user's preference
+        if (localStorage.getItem("darkMode") === "enabled") {
+            document.body.classList.add("dark-mode");
+        }
+
+        // Carousel Functionality
+        const carousel = document.querySelector(".carousel");
+        let index = 0;
+
+        function slideImages() {
+            index++;
+            if (index > 2) index = 0;
+            carousel.style.transform = `translateX(${-index * 100}%)`;
+        }
+
+        setInterval(slideImages, 3000); // Change image every 3 seconds
+    </script>
+
+</body>
+</html>

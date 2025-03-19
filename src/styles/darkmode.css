@@ -1,0 +1,13 @@
+/* src/styles/darkmode.css */
+.dark-mode {
+    background: #121212;
+    color: white;
+}
+
+.dark-mode .navbar {
+    background: #333;
+}
+
+.dark-mode #dark-mode-toggle {
+    color: yellow;
+}
