@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background: transparent;
+  overflow-x: hidden;
+}
+
+#binaryCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.landing-container {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(26, 26, 60, 0.75);
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

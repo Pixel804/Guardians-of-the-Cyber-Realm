@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guardians of the Cyber Realm - Dashboard</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+  <canvas id="binaryCanvas"></canvas>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <i class="fas fa-shield-alt icon-red-big"></i>
+      <h4>Cyber Realm</h4>
+    </div>
+    <ul class="sidebar-nav">
+      <li class="nav-item active">
+        <a href="dashboard.html">
+          <i class="fas fa-home"></i> Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="threats.html">
+          <i class="fas fa-exclamation-triangle"></i> Threats
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="logs.html">
+          <i class="fas fa-file-alt"></i> Logs
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="about.html">
+          <i class="fas fa-info-circle"></i> About
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="support.html">
+          <i class="fas fa-life-ring"></i> Support
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="login.html">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="index.html">
+          <i class="fas fa-door"></i> Home
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="main-content" id="mainContent">
+    <nav class="navbar navbar-expand-lg top-nav">
+      <div class="d-flex align-items-center">
+        <button class="btn btn-dark" id="sidebarToggleBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+        <span class="navbar-brand text-white mb-0 h1 ml-3">
+          Guardians of the Cyber Realm
+        </span>
+      </div>
+      <span class="ml-auto welcome-text">
+        Welcome, <strong id="usernameDisplay">Guest</strong>
+      </span>
+    </nav>
+    <div class="container-fluid px-0">
+      <section class="hero-scary-binary" data-reveal>
+        <div class="hero-content">
+          <h1 class="text-center text-white mb-4">Cyber Defense at Your Fingertips</h1>
+          <p class="text-white text-center mx-auto hero-description">
+            Real-time threat detection meets cutting-edge visualization. 
+            Explore the Guardians of the Cyber Realm dashboard to secure 
+            digital assets against evolving attacks.
+          </p>
+        </div>
+      </section>
+      
+      <!-- Move the map section here, just below the page description -->
+      <section class="container-fluid py-4" data-reveal>
+        <h3 class="text-white text-center mb-4">Your Location</h3>
+        <div id="map" style="height: 400px;"></div>
+      </section>
+
+      <!-- Carousel Section -->
+      <section class="my-5 px-3" data-reveal>
+        <div id="scaryCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#scaryCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#scaryCarousel" data-slide-to="1"></li>
+            <li data-target="#scaryCarousel" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" style="max-height:400px;">
+            <div class="carousel-item active">
+              <img
+                src="assets/images/cyber1.jpg"
+                class="d-block w-100"
+                alt="Cybersecurity Image 1"
+                style="height:400px; object-fit:cover;"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="assets/images/cyber2.jpg"
+                class="d-block w-100"
+                alt="Cybersecurity Image 2"
+                style="height:400px; object-fit:cover;"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="assets/images/cyber3.jpg"
+                class="d-block w-100"
+                alt="Cybersecurity Image 3"
+                style="height:400px; object-fit:cover;"
+              />
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#scaryCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#scaryCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+      </section>
+
+      <section class="container-fluid py-3" data-reveal>
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <div class="card bg-danger text-white card-panel">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <i class="fas fa-exclamation-triangle"></i> Threats
+                </h5>
+                <p id="threatSummary">3 detected</p>
+                <a href="threats.html" class="btn btn-light btn-sm">View Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card bg-success text-white card-panel">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <i class="fas fa-heartbeat"></i> System Health
+                </h5>
+                <p id="healthSummary">Good</p>
+                <button class="btn btn-light btn-sm" id="refreshHealthBtn">
+                  Refresh
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card bg-info text-white card-panel">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <i class="fas fa-file-alt"></i> Logs
+                </h5>
+                <p id="logCount">5 logs</p>
+                <a href="logs.html" class="btn btn-light btn-sm">View Logs</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card bg-warning text-dark card-panel">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <i class="fas fa-life-ring"></i> Support
+                </h5>
+                <p id="supportStatus">All clear</p>
+                <a href="support.html" class="btn btn-dark btn-sm">Get Support</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <div class="metrics-container">
+              <h5><i class="fas fa-bug"></i> Real-Time Threat Detection</h5>
+              <canvas id="threatChart"></canvas>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="metrics-container">
+              <h5><i class="fas fa-server"></i> Server Performance</h5>
+              <canvas id="performanceChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <div class="summary-card card-panel">
+              <h6>Total Tests</h6>
+              <p id="totalTests">2</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="summary-card card-panel">
+              <h6>Avg Threat</h6>
+              <p id="avgThreat">1.5</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="summary-card card-panel">
+              <h6>Last Test Time</h6>
+              <p id="lastTestTime">2025-04-05 10:23 AM</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <button id="testVulnBtn" class="btn btn-primary btn-block">
+              <i class="fas fa-flask"></i> Test Vulnerabilities
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button id="resetBtn" class="btn btn-secondary btn-block">
+              <i class="fas fa-redo"></i> Reset Data
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div id="notificationArea" class="alert alert-info" role="alert" style="display:none;">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="container-fluid py-4" data-reveal>
+        <h3 class="text-white text-center mb-4">Missions</h3>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="card mission-card">
+              <div class="card-body">
+                <h5 class="card-title">Mission: Phishing</h5>
+                <p class="card-text">
+                  Attackers disguise malicious links or attachments 
+                  as legitimate communications. Examine every email 
+                  closely.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card mission-card">
+              <div class="card-body">
+                <h5 class="card-title">Mission: Malware</h5>
+                <p class="card-text">
+                  Malicious software that damages systems or steals data. 
+                  Defend with real-time detection and frequent scans.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card mission-card">
+              <div class="card-body">
+                <h5 class="card-title">Mission: Ransomware</h5>
+                <p class="card-text">
+                  Encrypted data is held for ransom. 
+                  Create strong backups and stay vigilant.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card mission-card">
+              <div class="card-body">
+                <h5 class="card-title">Mission: Spyware</h5>
+                <p class="card-text">
+                  Stealthy programs that capture credentials. 
+                  Scan regularly and monitor system behavior.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card mission-card">
+              <div class="card-body">
+                <h5 class="card-title">Mission: Identity Theft</h5>
+                <p class="card-text">
+                  Criminals steal data to impersonate users. 
+                  Avoid oversharing and secure credentials.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card mission-card">
+              <div class="card-body">
+                <h5 class="card-title">Mission: Social Engineering</h5>
+                <p class="card-text">
+                  Exploits human trust to obtain unauthorized access. 
+                  Maintain healthy skepticism and verify requests.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div id="overlay">
+    <div id="overlaySpinner" class="text-center">
+      <div class="spinner-border text-light" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <p class="mt-3">Testing and recording data...</p>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

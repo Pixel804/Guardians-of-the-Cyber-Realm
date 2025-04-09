@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guardians of the Cyber Realm - About</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  />
+  <link rel="stylesheet" href="css/about.css" />
+</head>
+<body>
+  <canvas id="binaryCanvas"></canvas>
+
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <i class="fas fa-shield-alt icon-red-big"></i>
+      <h4>Cyber Realm</h4>
+    </div>
+    <ul class="sidebar-nav">
+      <li class="nav-item">
+        <a href="dashboard.html">
+          <i class="fas fa-home"></i> Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="threats.html">
+          <i class="fas fa-exclamation-triangle"></i> Threats
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="logs.html">
+          <i class="fas fa-file-alt"></i> Logs
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a href="about.html">
+          <i class="fas fa-info-circle"></i> About
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="support.html">
+          <i class="fas fa-life-ring"></i> Support
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="login.html">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="main-content" id="mainContent">
+    <nav class="navbar navbar-expand-lg top-nav">
+      <div class="d-flex align-items-center">
+        <button class="btn btn-dark" id="sidebarToggleBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+        <span class="navbar-brand text-white mb-0 h1 ml-3">
+          Guardians of the Cyber Realm
+        </span>
+      </div>
+      <span class="ml-auto welcome-text">
+        Welcome, <strong id="usernameDisplay">Guest</strong>
+      </span>
+    </nav>
+
+    <div class="container-fluid py-3">
+      <h3 class="text-white mb-4" data-reveal>
+        <i class="fas fa-info-circle"></i> About This Project
+      </h3>
+      <div class="about-section p-3" id="aboutContainer" data-reveal>
+        <p class="text-white">
+          Guardians of the Cyber Realm is an AI-inspired solution that defends 
+          digital environments from advanced cybersecurity threats. This system 
+          integrates real-time analytics, wave-like threat detection charts, 
+          rolling server monitoring, and a visually compelling binary matrix 
+          background for an immersive experience.
+        </p>
+        <p class="text-white mt-3">
+          The project takes inspiration from superhero themes, focusing on six 
+          major cyber missions: Phishing, Malware, Ransomware, Spyware, Identity 
+          Theft, and Social Engineering. Each mission can be tracked and managed 
+          within the Threats interface, where actions are applied in a dynamic way.
+        </p>
+        <p class="text-white mt-3">
+          The overall architecture relies on a web-based frontend (HTML, CSS, 
+          JavaScript) combined with AI-driven backend logic. Local storage 
+          retains test data, threat logs, and user actions for demonstration, 
+          but the system is designed to scale with enterprise environments 
+          using robust databases and real-time servers.
+        </p>
+        <p class="text-white mt-3">
+          Future enhancements include more extensive machine learning 
+          algorithms, integration with external SIEM solutions, and a 
+          cloud-based deployment model. The ultimate vision is to help 
+          organizations detect and respond to novel attacks before 
+          they compromise critical assets. With the synergy of 
+          real-time analytics, user-friendly design, and a commitment 
+          to ongoing innovation, the system stands ready to guard 
+          the digital realm.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  ></script>
+  <script src="js/about.js"></script>
+</body>
+</html>
